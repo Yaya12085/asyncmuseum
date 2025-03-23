@@ -2,7 +2,7 @@
 
 ## Demo
 
-[async-museum.vercel.app](https://async-museum.vercel.app)
+[https://asyncmuseum.vercel.app](https://asyncmuseum.vercel.app)
 
 ## Techstack
 

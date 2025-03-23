@@ -4,53 +4,118 @@ import Image from "next/image";
 export default function About() {
   return (
     <Container>
-      <div className="flex flex-col md:flex-row gap-4">
-        <Image
-          src="https://images.metmuseum.org/CRDImages/dp/web-large/DP889132.jpg"
-          alt="About"
-          width={1500}
-          height={0}
-          className="rounded-lg"
-        />
-        <div className="flex flex-col gap-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-            À propos de AsyncMuseum
-          </h1>
+      <div className="flex flex-col gap-8">
+        {/* First Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Image
+            src="https://images.metmuseum.org/CRDImages/dp/web-large/DP889132.jpg"
+            alt="About"
+            width={1500}
+            height={0}
+            className="rounded-lg w-full h-[600px] object-cover"
+          />
 
-          <div className="prose dark:prose-invert max-w-none">
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              AsyncMuseum est une plateforme numérique innovante qui rend
-              l&apos;art accessible à tous. Notre mission est de démocratiser
-              l&apos;accès aux œuvres d&apos;art en créant une expérience
-              immersive et éducative en ligne.
-            </p>
+          <div className="flex flex-col gap-6">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              À propos de AsyncMuseum
+            </h1>
 
-            <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-900 dark:text-gray-100">
-              Notre Vision
+            <div className="prose dark:prose-invert max-w-none">
+              <p className="text-lg text-gray-700 dark:text-gray-300">
+                AsyncMuseum est une plateforme numérique innovante qui rend
+                l&apos;art accessible à tous. Notre mission est de démocratiser
+                l&apos;accès aux œuvres d&apos;art en créant une expérience
+                immersive et éducative en ligne.
+              </p>
+
+              <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-900 dark:text-gray-100">
+                Notre Vision
+              </h2>
+              <p className="text-gray-700 dark:text-gray-300">
+                Nous croyons que l&apos;art devrait être accessible à tous,
+                partout et à tout moment. En utilisant les dernières
+                technologies, nous créons des expériences virtuelles qui
+                permettent aux visiteurs de découvrir et d&apos;apprécier des
+                œuvres d&apos;art du monde entier.
+              </p>
+
+              <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-900 dark:text-gray-100">
+                Ce Que Nous Offrons
+              </h2>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                <li>
+                  Accès à des milliers d&apos;œuvres d&apos;art numérisées en
+                  haute définition
+                </li>
+                <li>Visites virtuelles guidées de collections exclusives</li>
+                <li>
+                  Contenu éducatif et historique détaillé pour chaque œuvre
+                </li>
+                <li>Interface intuitive adaptée à tous les publics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Second Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Opening Hours Section */}
+          <div className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+              Horaires d&apos;ouverture
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
-              Nous croyons que l&apos;art devrait être accessible à tous,
-              partout et à tout moment. En utilisant les dernières technologies,
-              nous créons des expériences virtuelles qui permettent aux
-              visiteurs de découvrir et d&apos;apprécier des œuvres d&apos;art
-              du monde entier.
-            </p>
-
-            <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-900 dark:text-gray-100">
-              Ce Que Nous Offrons
-            </h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-              <li>
-                Accès à des milliers d&apos;œuvres d&apos;art numérisées en
-                haute définition
-              </li>
-              <li>Visites virtuelles guidées de collections exclusives</li>
-              <li>Contenu éducatif et historique détaillé pour chaque œuvre</li>
-              <li>Interface intuitive adaptée à tous les publics</li>
-            </ul>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-600 dark:text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-gray-700 dark:text-gray-300">
+                  <div>Lundi - Vendredi</div>
+                  <div>9h00 - 18h00</div>
+                  <div>Samedi</div>
+                  <div>10h00 - 17h00</div>
+                  <div>Dimanche</div>
+                  <div>Fermé</div>
+                </div>
+              </div>
+              <div className="mt-4 flex items-start gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-600 dark:text-gray-400 mt-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Jours fériés : Horaires spéciaux, veuillez consulter notre
+                  calendrier.
+                  <br />
+                  Dernière admission 30 minutes avant la fermeture.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          {/* Contact Section */}
+          <div className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
               Contactez-nous
             </h2>
