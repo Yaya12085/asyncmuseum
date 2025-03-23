@@ -1,10 +1,10 @@
 export const links = [
   {
-    label: "Home",
+    label: "Accueil",
     href: "/",
   },
   {
-    label: "About",
+    label: "À propos",
     href: "/about",
   },
 ];
