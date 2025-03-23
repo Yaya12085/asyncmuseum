@@ -34,7 +34,8 @@ export default function Nav() {
   return (
     <div className="sticky top-0 z-50 px-4 py-3 flex items-center justify-between bg-white border-b h-16">
       <Link href="/" className="text-xl md:text-2xl font-bold">
-        AsyncMuseum
+        <span className="text-2xl">🏛️</span>
+        <span className="ml-2 text-muted-foreground text-sm">AsyncMuseum</span>
       </Link>
 
       {/* Desktop menu */}
@@ -44,7 +45,7 @@ export default function Nav() {
             <Link
               href={link.href}
               className={cn(
-                "text-sm font-medium hover:text-[#100de0] transition-colors",
+                "text-sm font-medium hover:text-[#100de0] transition-colors text-muted-foreground",
                 isActive(link.href) && "text-[#100de0]"
               )}
             >

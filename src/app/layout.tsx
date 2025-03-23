@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Async Museum",
-  description: "Async Museum",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  title: "AsyncMuseum",
+  description:
+    "AsyncMuseum est une plateforme numérique innovante qui rend l&apos;art accessible à tous.",
+  icons:
+    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>",
 };
 
 export default function RootLayout({
