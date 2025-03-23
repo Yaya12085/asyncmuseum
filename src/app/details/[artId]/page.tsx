@@ -1,10 +1,12 @@
 "use client";
 import { ArtworkCard } from "@/components/artwork-grid";
 import Container from "@/components/container";
+import Litebox from "@/components/litebox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { arts } from "@/data/arts";
-import { ArrowLeft, Maximize, XIcon } from "lucide-react";
+import { getArtwork } from "@/lib/utils";
+import { ArrowLeft, Maximize } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { use, useState } from "react";
@@ -15,7 +17,9 @@ export default function ArtworkDetailsPage(props: {
   const router = useRouter();
   const params = use(props.params);
   const { artId } = params;
-  const artwork = arts.find((art) => art.id === Number(artId));
+
+  const artwork = getArtwork(artId);
+
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   if (!artwork) return <p>Artwork not found</p>;
@@ -86,7 +90,6 @@ export default function ArtworkDetailsPage(props: {
         </div>
       </div>
 
-      {/* Related Artworks Section */}
       {relatedArtworks.length > 0 && (
         <div className="mt-12 mb-8">
           <h2 className="text-2xl font-bold mb-6">Related Artworks</h2>
@@ -98,33 +101,11 @@ export default function ArtworkDetailsPage(props: {
         </div>
       )}
 
-      {/* Lightbox */}
-      {lightboxOpen && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-4 right-4 text-white hover:bg-white/20"
-            onClick={() => setLightboxOpen(false)}
-          >
-            <XIcon className="h-6 w-6" />
-          </Button>
-          <div className="relative w-full h-full max-w-5xl max-h-[90vh] mx-4">
-            <Image
-              src={artwork.image}
-              alt={artwork.name}
-              fill
-              className="object-contain"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 text-center">
-              <h3 className="text-xl font-bold">{artwork.name}</h3>
-              <p className="text-sm opacity-80">
-                {artwork.artist}, {artwork.date}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+      <Litebox
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        artwork={artwork}
+      />
     </Container>
   );
 }

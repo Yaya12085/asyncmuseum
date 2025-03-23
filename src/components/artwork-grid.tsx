@@ -1,4 +1,5 @@
 import { Artwork } from "@/data/arts";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,9 +7,29 @@ interface Props {
   data: Artwork[];
 }
 
-export const ArtworkCard = ({ artwork }: { artwork: Artwork }) => {
+const getColumns = (data: Artwork[], columnCount = 5) => {
+  const columns: Artwork[][] = Array.from({ length: columnCount }, () => []);
+
+  data.forEach((artwork, index) => {
+    const columnIndex = index % columnCount;
+    columns[columnIndex].push(artwork);
+  });
+
+  return columns;
+};
+
+export const ArtworkCard = ({
+  artwork,
+  className,
+}: {
+  artwork: Artwork;
+  className?: string;
+}) => {
   return (
-    <Link href={`/details/${artwork.id}`} className="group relative">
+    <Link
+      href={`/details/${artwork.id}`}
+      className={cn("group relative mx-auto", className)}
+    >
       <div className="overflow-hidden bg-card">
         <Image
           src={artwork.image}
@@ -33,10 +54,16 @@ export const ArtworkCard = ({ artwork }: { artwork: Artwork }) => {
 };
 
 export default function ArtworkGrid({ data }: Props) {
+  const columns = getColumns(data);
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1 p-6">
-      {data.map((artwork) => (
-        <ArtworkCard key={artwork.id} artwork={artwork} />
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-6">
+      {columns.map((column, columnIndex) => (
+        <div key={columnIndex} className="flex flex-col gap-4">
+          {column.map((artwork) => (
+            <ArtworkCard key={artwork.id} artwork={artwork} />
+          ))}
+        </div>
       ))}
     </div>
   );
